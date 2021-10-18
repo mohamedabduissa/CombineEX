@@ -42,21 +42,7 @@ jobs:
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
-       
-             
-    
-    
-      
-
-        
-profiling:
-    runs-on: macos-10.15
-    timeout-minutes: 45
-    steps:
-      - name: Git - Checkout
-        uses: actions/checkout@v2.3.4
-      - name: Clean up keychain and provisioning profile
-        run: |
-         security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
-         rm ~/Library/MobileDevice/Provisioning\ Profiles/build_pp.mobileprovision
+          
+    - name: Build app
+      run: xcodebuild -project ./CombineExample.xcodeproj -scheme CombineExample -configuration Release build -allowProvisioningUpdates
       
