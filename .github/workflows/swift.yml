@@ -14,6 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build
-      run: -project ./CombineExample.xcodeproj -scheme CombineExample -configuration Release build -allowProvisioningUpdates
+      run: xcodebuild -project ./CombineExample.xcodeproj -scheme CombineExample -configuration Release build -allowProvisioningUpdates
     - name: Run tests
       run: swift test -v
